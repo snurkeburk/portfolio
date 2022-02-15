@@ -14,18 +14,62 @@ function App() {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
+
       <header className="App-header">
-        <img
-          src={z}
+        <svg
           style={{
-            zIndex: "1",
             position: "absolute",
-            width: "100%",
-            maxHeight: "100%",
-            opacity: "10%",
-            pointerEvents: "none",
           }}
-        ></img>
+          viewBox="0 0 1920 900"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            id="top1"
+            x1="43.3468"
+            y1="181"
+            x2="1877"
+            y2="180.431"
+            stroke="#40CEC6"
+            stroke-opacity="0.11"
+          />
+          <line
+            id="diagonal1"
+            x1="42.8177"
+            y1="898.534"
+            x2="1877.06"
+            y2="180.534"
+            stroke="#40CEC6"
+            stroke-opacity="0.11"
+          />
+
+          <line
+            id="bottom"
+            x1="43.3547"
+            y1="898.499"
+            x2="1877.35"
+            y2="898.499"
+            stroke="#40CEC6"
+            stroke-opacity="0.11"
+          />
+          <ellipse
+            id="ellipse"
+            cx="916"
+            cy="540"
+            rx="651"
+            ry="310"
+            fill="#060A09"
+          />
+          <rect
+            id="rect"
+            x="318"
+            y="134"
+            width="1107"
+            height="93"
+            fill="#060A09"
+          />
+        </svg>
         <div
           className="blurred-html"
           style={{

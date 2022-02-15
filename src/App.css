@@ -10,6 +10,9 @@
   --green: #10ff28;
   --red: #fc0000;
   --gray: rgba(255, 255, 255, 0.19);
+
+  --typewriterSpeed: 2s;
+  --typewriterCharacters: 13;
 }
 
 .html-blue {
@@ -48,6 +51,10 @@
 }
 .html-spacer {
   visibility: hidden;
+}
+
+.inquery {
+  z-index: 100;
 }
 
 .inquery-green {
@@ -173,6 +180,102 @@ h1 {
   width: 25rem;
 }
 
+#top1 {
+  animation: slideHorizontal 1s;
+  animation-delay: 0s;
+}
+#diagonal1 {
+  animation: slideDiagonal 1s;
+  animation-delay: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+#bottom {
+  animation: slideHorizontal 1s;
+  animation-delay: 0.5s;
+  transform: scale(0, 1);
+  animation-fill-mode: forwards;
+}
+#ellipse {
+  animation: slideDiagonal 1s;
+  animation-delay: 2s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+#rect {
+  animation: slideDiagonal 1s;
+  animation-delay: 4s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@keyframes slideHorizontal {
+  from {
+    transform: scale(0, 1);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes slideDiagonal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  position: relative;
+  width: max-content;
+}
+
+h1::before,
+h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h1::before {
+  background: #060a09;
+  animation: typewriter var(--typewriterSpeed)
+    steps(var(--typewriterCharacters)) 1s forwards;
+}
+
+h1::after {
+  width: 0.05em;
+  background: var(--cyan);
+  animation: typewriter var(--typewriterSpeed)
+      steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -190,6 +293,7 @@ h1 {
   display: flex;
   margin-left: -10rem;
   justify-content: space-evenly;
+  z-index: 1000;
 }
 
 .htmlbod-info {
