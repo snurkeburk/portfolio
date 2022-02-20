@@ -28,7 +28,6 @@ function App() {
       opacity: 1,
     },
   };
-
   const containerBlurred = {
     hidden: { opacity: 0 },
     show: {
