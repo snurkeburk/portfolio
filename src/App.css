@@ -2,6 +2,7 @@
   text-align: center;
 }
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
 :root {
   --blue: #249bc0;
   --orange: #e79a27;
@@ -53,6 +54,21 @@
   visibility: hidden;
 }
 
+.h1-cyan {
+  font-size: 3.2rem;
+  font-weight: 100;
+  color: white;
+}
+.p-cyan {
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: white;
+  margin-right: 1rem;
+}
+.p-typical {
+  font-size: 1.2rem;
+  color: var(--cyan);
+}
 .inquery {
   z-index: 100;
 }
@@ -127,6 +143,7 @@ h1 {
   width: 10rem;
   height: 2.5rem;
   opacity: 75%;
+  color: #cfb139;
 }
 .two {
   width: 8rem;
@@ -225,7 +242,7 @@ h1 {
     opacity: 1;
   }
 }
-
+/*
 h1 {
   font-size: clamp(1rem, 3vw + 1rem, 4rem);
   position: relative;
@@ -274,7 +291,7 @@ h1::after {
     opacity: 1;
     transform: translateY(0);
   }
-}
+}*/
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -304,7 +321,7 @@ h1::after {
 }
 
 .App-header {
-  background-color: #060a09;
+  background-color: #020202;
   font-family: "Fira Code", monospace;
   min-height: 100vh;
   display: flex;

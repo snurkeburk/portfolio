@@ -1,13 +1,99 @@
 import "./App.css";
-import react from "react";
+import react, { useEffect, useState } from "react";
 import reactIcon from "./logo192.png";
 import cssIcon from "./css.png";
 import htmlIcon from "./html.png";
 import jsIcon from "./js.png";
 import z from "./z.png";
 import { Button } from "@mui/material";
+import Typical from "react-typical";
+import { m, motion } from "framer-motion";
+import Typist from "react-typist";
 
 function App() {
+  const [allShown, setAllShown] = useState("hidden");
+  const [headerIsFinished, setHeaderIsFinished] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setHeaderIsFinished(true);
+    }, 5300);
+  });
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      transition: {
+        delayChildren: 7,
+        staggerChildren: 0.4,
+      },
+      opacity: 1,
+    },
+  };
+  const containerBlurred = {
+    hidden: { opacity: 0 },
+    show: {
+      transition: {
+        delayChildren: 8,
+      },
+      opacity: 1,
+    },
+  };
+  const containerTop = {
+    hidden: { opacity: 0 },
+    show: {
+      transition: {
+        delayChildren: 6,
+        staggerChildren: 0.1,
+      },
+      opacity: 1,
+    },
+  };
+  const containerMid = {
+    hidden: { opacity: 0 },
+    show: {
+      transition: {
+        delayChildren: 7,
+      },
+      opacity: 1,
+    },
+  };
+  const containerBot = {
+    hidden: { opacity: 0 },
+    show: {
+      transition: {
+        delayChildren: 6.3,
+        staggerChildren: 0.3,
+      },
+      opacity: 1,
+    },
+  };
+  const item = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
+  const containerMainInfo = {
+    hidden: { opacity: 0 },
+    show: {
+      transition: {
+        delayChildren: 1.3,
+        staggerChildren: 1,
+      },
+      opacity: 1,
+    },
+  };
+
+  const itemMainInfo = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
+
+  const [count, setCount] = useState(1);
+  const [count2, setCount2] = useState(1);
+
+  useEffect(() => {
+    // document.title = `You clicked ${count} times`;
+    console.log("Count: " + count);
+    setCount(1);
+  }, [count]);
   return (
     <div className="App">
       <link
@@ -16,7 +102,7 @@ function App() {
       />
 
       <header className="App-header">
-        <svg
+        {/*    <svg
           style={{
             position: "absolute",
           }}
@@ -69,8 +155,8 @@ function App() {
             height="93"
             fill="#060A09"
           />
-        </svg>
-        <div
+        </svg> */}
+        <motion.div
           className="blurred-html"
           style={{
             filter: "blur(2px)",
@@ -78,8 +164,12 @@ function App() {
             display: "flex",
             flexDirection: "column",
           }}
+          variants={containerBlurred}
+          initial="hidden"
+          animate="show"
         >
-          <div
+          <motion.div
+            variants={item}
             className="htmlbod-portfolio-container"
             style={{ display: "flex", paddingLeft: "10rem" }}
           >
@@ -88,9 +178,10 @@ function App() {
             <p className="html-orange">className=</p>
             <p className="html-cyan-green">"portfolio-container"</p>
             <p className="html-blue">&gt;</p>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            variants={item}
             className="htmlbod-info"
             style={{ display: "flex", paddingLeft: "17rem" }}
           >
@@ -99,11 +190,16 @@ function App() {
             <p className="html-orange">className=</p>
             <p className="html-cyan-green">"info"</p>
             <p className="html-blue">&gt;</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         <section className="main-info">
-          <div className="main-info-left">
-            <div className="htmlbod-info">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="main-info-left"
+          >
+            <motion.div variants={item} className="htmlbod-info">
               <p className="html-blue">&lt;h1</p>
               <p className="html-spacer">_</p>
               <p className="html-orange">className=</p>
@@ -112,8 +208,8 @@ function App() {
               <p className="html-gray">
                 <p className="html-spacer">_</p>&#123;
               </p>
-            </div>
-            <div className="htmlbod-info">
+            </motion.div>
+            <motion.div variants={item} className="htmlbod-info">
               <p className="html-blue">&lt;h2</p>
               <p className="html-spacer">_</p>
               <p className="html-orange">className=</p>
@@ -122,8 +218,8 @@ function App() {
               <p className="html-gray">
                 <p className="html-spacer">__</p>&#123;
               </p>
-            </div>{" "}
-            <div className="htmlbod-info">
+            </motion.div>
+            <motion.div variants={item} className="htmlbod-info">
               <p className="html-blue">&lt;h1</p>
               <p className="html-spacer">_</p>
               <p className="html-orange">className=</p>
@@ -132,10 +228,14 @@ function App() {
               <p className="html-gray">
                 <p className="html-spacer">_</p>&#123;
               </p>
-            </div>
-          </div>
-          <div>
-            <div
+            </motion.div>
+          </motion.div>
+          <motion.div
+            variants={containerMainInfo}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div
               style={{
                 height: "3rem",
                 margin: "0",
@@ -145,14 +245,15 @@ function App() {
                 marginLeft: "5rem",
               }}
             >
-              <h1
-                className="html-cyan"
-                style={{ fontWeight: "100", fontSize: "3.3rem" }}
-              >
-                Isak Anderson
-              </h1>
-            </div>
-            <div
+              <Typical
+                wrapper="h1"
+                steps={["Isak Anderson", 1000]}
+                className="h1-cyan"
+                id="name"
+              />
+            </motion.div>
+            <motion.div
+              variants={itemMainInfo}
               style={{
                 height: "3rem",
                 margin: "0",
@@ -164,178 +265,244 @@ function App() {
               }}
             >
               <h2
-                className="html-cyan"
                 style={{
                   fontWeight: "100",
                   fontSize: "2.8rem",
                   opacity: "80%",
                 }}
               >
-                18.6001232
+                18.6001232...
               </h2>
-            </div>
-            <div
+            </motion.div>
+            <motion.div
+              variants={itemMainInfo}
               style={{
                 height: "3rem",
                 margin: "0",
                 alignItems: "center",
                 display: "flex",
-                textAlign: "center",
+                textAlign: "left",
                 marginLeft: "5rem",
-                justifyContent: "center",
+                width: "66rem",
+                justifyContent: "flex-start",
               }}
             >
-              <p
-                className="html-cyan"
+              <div className="p-cyan">
+                {count2 ? (
+                  <Typist
+                    avgTypingDelay={30}
+                    cursor={{
+                      element: "|",
+                      hideWhenDone: true,
+                      hideWhenDoneDelay: 1,
+                    }}
+                  >
+                    <span>
+                      <Typist.Delay ms={2500} />
+                      ...year old [student & hobby] developer that enjoys &
+                      focuses on
+                    </span>
+                  </Typist>
+                ) : (
+                  ""
+                )}
+              </div>
+
+              <div className="p-typical">
+                {count && headerIsFinished ? (
+                  <Typist avgTypingDelay={50} onTypingDone={() => setCount(0)}>
+                    <span>design & layout</span>
+                    <Typist.Backspace count={20} delay={1000} />
+                    <span>user experience</span>
+                    <Typist.Backspace count={20} delay={1000} />
+                    <span>learning</span>
+                    <Typist.Backspace count={20} delay={1000} />
+                    <span>perfecting</span>
+                    <Typist.Backspace count={20} delay={1000} />
+                    <span>problemsolving</span>
+                    <Typist.Backspace count={20} delay={1000} />{" "}
+                    <span>teamwork</span>
+                    <Typist.Backspace count={20} delay={1000} />
+                  </Typist>
+                ) : (
+                  ""
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+          <motion.div variants={container} initial="hidden" animate="show">
+            <motion.div className="htmlbod-info" variants={item}>
+              <motion.p className="html-spacer">_____</motion.p>
+              <motion.p className="html-blue">&lt;/h1&gt;</motion.p>
+            </motion.div>{" "}
+            <motion.div className="htmlbod-info" variants={item}>
+              <motion.p className="html-spacer">_____</motion.p>
+              <motion.p className="html-blue">&lt;/h2&gt;</motion.p>
+            </motion.div>{" "}
+            <motion.div className="htmlbod-info" variants={item}>
+              <motion.p className="html-spacer">_____</motion.p>
+              <motion.p className="html-blue">&lt;/p&gt;</motion.p>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        <motion.div className="tools-container">
+          <motion.div
+            className="tool-top"
+            variants={containerTop}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={item}>
+              <Button
+                className="html-btn"
+                variant="contained"
                 style={{
-                  fontWeight: "100",
-                  fontSize: "1.2rem",
-                  opacity: "50%",
+                  fontSize: "2rem",
+                  backgroundColor: "#E44E25",
+                  height: "3rem",
+                  fontWeight: "1000",
+                  fontFamily: "Open Sans, sans-serif",
+                }}
+                sx={{
+                  borderRadius: "0.5rem",
                 }}
               >
-                year old [student & hobby] developer
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="htmlbod-info">
-              <p className="html-spacer">_____</p>
-              <p className="html-blue">&lt;/h1&gt;</p>
-            </div>{" "}
-            <div className="htmlbod-info">
-              <p className="html-spacer">_____</p>
-              <p className="html-blue">&lt;/h2&gt;</p>
-            </div>{" "}
-            <div className="htmlbod-info">
-              <p className="html-spacer">_____</p>
-              <p className="html-blue">&lt;/p&gt;</p>
-            </div>
-          </div>
-        </section>
+                {" "}
+                <img src={htmlIcon} className="react-logo" alt="logo" />
+                HTML
+              </Button>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="tool-mid"
+            variants={containerMid}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={item}>
+              <Button
+                variant="contained"
+                className="css-btn"
+                style={{
+                  fontSize: "2rem",
+                  fontWeight: "1000",
+                  fontFamily: "Open Sans, sans-serif",
+                }}
+                sx={{
+                  borderRadius: "0.5rem",
+                  backgroundColor: "#0B51C1",
+                }}
+              >
+                {" "}
+                <img src={cssIcon} className="react-logo" alt="logo" />
+                CSS
+              </Button>
+            </motion.div>
+            <motion.div variants={item}>
+              <Button
+                variant="contained"
+                className="react-button"
+                style={{
+                  fontFamily: "Open Sans, sans-serif",
+                  textShadow: "2px 4px 3px rgba(0,0,0,0.3)",
+                }}
+                sx={{
+                  backgroundColor: "#222222",
+                  border: 1,
+                  borderColor: "cyan",
+                  borderWidth: "3px",
+                  borderRadius: "1rem",
+                }}
+              >
+                <img src={reactIcon} className="react-logo" alt="logo" />
+                REACT
+              </Button>
+            </motion.div>
 
-        <section className="tools-container">
-          <div className="tool-top">
-            <Button
-              className="html-btn"
-              variant="contained"
-              style={{
-                width: "10rem",
-                backgroundColor: "#E44E25",
-                fontSize: "2rem",
-                fontWeight: "1000",
-                textShadow: "2px 4px 3px rgba(0,0,0,0.3)",
-                width: "10rem",
-                fontFamily: "Fira Code, monospace",
-                height: " 3rem",
-                display: "flex",
-                justifyContent: " space-between",
-              }}
-              sx={{
-                borderRadius: "0.5rem",
-              }}
-            >
-              {" "}
-              <img src={htmlIcon} className="react-logo" alt="logo" />
-              HTML
-            </Button>
-          </div>
-          <div className="tool-mid">
-            <Button
-              variant="contained"
-              style={{
-                fontSize: "2rem",
-                fontWeight: "1000",
-                textShadow: "2px 4px 3px rgba(0,0,0,0.3)",
-              }}
-              sx={{
-                borderRadius: "0.5rem",
-                backgroundColor: "#0B51C1",
-              }}
-            >
-              {" "}
-              <img src={cssIcon} className="react-logo" alt="logo" />
-              CSS
-            </Button>
-            <Button
-              variant="contained"
-              className="react-button"
-              style={{
-                fontWeight: "1000",
-                textShadow: "2px 4px 3px rgba(0,0,0,0.3)",
-              }}
-              sx={{
-                backgroundColor: "#222222",
-                border: 1,
-                borderColor: "cyan",
-                borderWidth: "3px",
-                borderRadius: "1rem",
-              }}
-            >
-              <img src={reactIcon} className="react-logo" alt="logo" />
-              REACT
-            </Button>
-            <Button
-              variant="contained"
-              style={{
-                fontSize: "1rem",
-                textShadow: "2px 4px 3px rgba(0,0,0,0.3)",
-                textTransform: "capitalize",
-                backgroundColor: "#FFD83A",
-                fontWeight: "1000",
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-              sx={{
-                borderRadius: "0.5rem",
-              }}
-            >
-              {" "}
-              <img src={jsIcon} className="js-logo" alt="logo" />
-              JavaScript
-            </Button>
-          </div>
-          <div className="tool-bot">
-            <Button
-              className="one"
-              variant="contained"
-              style={{
-                fontSize: "1.5rem",
-              }}
-              sx={{
-                borderRadius: "0.5rem",
-              }}
-            >
-              {" "}
-              Firebase
-            </Button>
-            <Button
-              className="two"
-              variant="contained"
-              style={{}}
-              sx={{
-                borderRadius: "0.3rem",
-              }}
-            >
-              {" "}
-              .NET C#
-            </Button>
-            <Button
-              className="three"
-              variant="contained"
-              style={{
-                fontSize: "0.48rem",
-              }}
-              sx={{
-                borderRadius: "0.2rem",
-              }}
-            >
-              {" "}
-              Framer-motion
-            </Button>
-          </div>
-        </section>
+            <motion.div variants={item}>
+              <Button
+                variant="contained"
+                style={{
+                  fontSize: "1.2rem",
+                  textTransform: "capitalize",
+                  backgroundColor: "#cfb139",
+                  fontFamily: "Open Sans, sans-serif",
+                  display: "flex",
+                  justifyContent: "space-around",
+                }}
+                sx={{
+                  borderRadius: "0.5rem",
+                }}
+              >
+                {" "}
+                <img
+                  src={jsIcon}
+                  style={{ marginLeft: "-1.3rem" }}
+                  className="js-logo"
+                  alt="logo"
+                />
+                JavaScript
+              </Button>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="tool-bot"
+            variants={containerBot}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={item}>
+              <Button
+                className="one"
+                variant="contained"
+                style={{
+                  fontSize: "1.5rem",
+                  fontFamily: "Open Sans, sans-serif",
+                }}
+                sx={{
+                  borderRadius: "0.5rem",
+                }}
+              >
+                {" "}
+                Firebase
+              </Button>
+            </motion.div>
+            <motion.div variants={item}>
+              <Button
+                className="two"
+                variant="contained"
+                style={{
+                  fontFamily: "Open Sans, sans-serif",
+                }}
+                sx={{
+                  borderRadius: "0.3rem",
+                }}
+              >
+                {" "}
+                .NET C#
+              </Button>
+            </motion.div>
+            <motion.div variants={item}>
+              <Button
+                className="three"
+                variant="contained"
+                style={{
+                  fontSize: "0.48rem",
+                  fontFamily: "Open Sans, sans-serif",
+                }}
+                sx={{
+                  borderRadius: "0.2rem",
+                }}
+              >
+                {" "}
+                Framer-motion
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        <section className="inquery">
+        <motion.section className="inquery">
           <div style={{ display: "flex" }}>
             <p className="inquery-gray">&#123;</p>
             <p className="html-spacer">___</p>
@@ -378,7 +545,7 @@ function App() {
               Contact me!
             </p>
           </div>
-        </section>
+        </motion.section>
         <section className="view-prj">
           <div
             className="htmlbod-proj-container"
