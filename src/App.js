@@ -1,10 +1,10 @@
 import "./App.css";
 import react, { useEffect, useState } from "react";
-import reactIcon from "./logo192.png";
-import cssIcon from "./css.png";
-import htmlIcon from "./html.png";
-import jsIcon from "./js.png";
-import z from "./z.png";
+import reactIcon from "./images/logo192.png";
+import cssIcon from "./images/css.png";
+import htmlIcon from "./images//html.png";
+import jsIcon from "./images//js.png";
+import z from "./images/z.png";
 import { Button } from "@mui/material";
 import Typical from "react-typical";
 import { m, motion } from "framer-motion";
@@ -41,7 +41,9 @@ function App() {
     hidden: { opacity: 0 },
     show: {
       transition: {
-        delayChildren: 6,
+        duration: 1,
+
+        delayChildren: 6.5,
         staggerChildren: 0.1,
       },
       opacity: 1,
@@ -51,7 +53,8 @@ function App() {
     hidden: { opacity: 0 },
     show: {
       transition: {
-        delayChildren: 7,
+        duration: 1,
+        delayChildren: 6.75,
       },
       opacity: 1,
     },
@@ -60,7 +63,7 @@ function App() {
     hidden: { opacity: 0 },
     show: {
       transition: {
-        delayChildren: 6.3,
+        delayChildren: 7,
         staggerChildren: 0.3,
       },
       opacity: 1,
@@ -90,8 +93,6 @@ function App() {
   const [count2, setCount2] = useState(1);
 
   useEffect(() => {
-    // document.title = `You clicked ${count} times`;
-    console.log("Count: " + count);
     setCount(1);
   }, [count]);
   return (
@@ -162,6 +163,7 @@ function App() {
             filter: "blur(2px)",
             width: "100%",
             display: "flex",
+            position: "fixed",
             flexDirection: "column",
           }}
           variants={containerBlurred}
@@ -171,7 +173,11 @@ function App() {
           <motion.div
             variants={item}
             className="htmlbod-portfolio-container"
-            style={{ display: "flex", paddingLeft: "10rem" }}
+            style={{
+              display: "flex",
+              paddingLeft: "10rem",
+              height: "1rem",
+            }}
           >
             <p className="html-blue">&lt;main-section</p>
             <p className="html-spacer">_</p>
@@ -183,7 +189,106 @@ function App() {
           <motion.div
             variants={item}
             className="htmlbod-info"
-            style={{ display: "flex", paddingLeft: "17rem" }}
+            style={{
+              display: "flex",
+              paddingLeft: "13rem",
+              height: "3rem",
+            }}
+          >
+            <p className="html-blue">&lt;div</p>
+            <p className="html-spacer">_</p>
+            <p className="html-orange">className=</p>
+            <p className="html-cyan-green">"info"</p>
+            <p className="html-blue">&gt;</p>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="htmlbod-info"
+            style={{
+              display: "flex",
+              paddingLeft: "16rem",
+              height: "1rem",
+            }}
+          >
+            <p className="html-blue">&lt;div</p>
+            <p className="html-spacer">_</p>
+            <p className="html-orange">className=</p>
+            <p className="html-cyan-green">"info"</p>
+            <p className="html-blue">&gt;</p>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="htmlbod-info"
+            style={{
+              display: "flex",
+              paddingLeft: "19rem",
+              height: "1rem",
+            }}
+          >
+            <p className="html-blue">&lt;div</p>
+            <p className="html-spacer">_</p>
+            <p className="html-orange">className=</p>
+            <p className="html-cyan-green">"info"</p>
+            <p className="html-blue">&gt;</p>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="htmlbod-info"
+            style={{
+              display: "flex",
+              paddingLeft: "22rem",
+              height: "1rem",
+            }}
+          >
+            <p className="html-blue">&lt;div</p>
+            <p className="html-spacer">_</p>
+            <p className="html-orange">className=</p>
+            <p className="html-cyan-green">"info"</p>
+            <p className="html-blue">&gt;</p>
+          </motion.div>
+          <motion.div
+            variants={item}
+            className="htmlbod-info"
+            style={{
+              display: "flex",
+              paddingLeft: "22rem",
+              height: "1rem",
+            }}
+          >
+            <p className="html-blue">&lt;div</p>
+            <p className="html-spacer">_</p>
+            <p className="html-orange">className=</p>
+            <p className="html-cyan-green">"info"</p>
+            <p className="html-blue">&gt;</p>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="htmlbod-info"
+            style={{
+              display: "flex",
+              paddingLeft: "16rem",
+              height: "1rem",
+            }}
+          >
+            <p className="html-blue">&lt;div</p>
+            <p className="html-spacer">_</p>
+            <p className="html-orange">className=</p>
+            <p className="html-cyan-green">"info"</p>
+            <p className="html-blue">&gt;</p>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="htmlbod-info"
+            style={{
+              display: "flex",
+              paddingLeft: "13rem",
+              height: "1rem",
+            }}
           >
             <p className="html-blue">&lt;div</p>
             <p className="html-spacer">_</p>
@@ -192,7 +297,12 @@ function App() {
             <p className="html-blue">&gt;</p>
           </motion.div>
         </motion.div>
-        <section className="main-info">
+        <motion.section
+          className="main-info"
+          style={{
+            marginTop: "3.5rem",
+          }}
+        >
           <motion.div
             variants={container}
             initial="hidden"
@@ -231,9 +341,9 @@ function App() {
             </motion.div>
           </motion.div>
           <motion.div
-            variants={containerMainInfo}
-            initial="hidden"
-            animate="show"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, delay: 5 }}
           >
             <motion.div
               style={{
@@ -241,8 +351,8 @@ function App() {
                 margin: "0",
                 alignItems: "center",
                 display: "flex",
-                justifyContent: "center",
-                marginLeft: "5rem",
+                justifyContent: "flex-start",
+                marginLeft: "10rem",
               }}
             >
               <Typical
@@ -260,19 +370,21 @@ function App() {
                 alignItems: "center",
                 display: "flex",
                 textAlign: "center",
-                marginLeft: "5rem",
                 justifyContent: "center",
               }}
             >
-              <h2
+              <motion.h2
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1 }}
                 style={{
                   fontWeight: "100",
-                  fontSize: "2.8rem",
+                  fontSize: "2.4rem",
                   opacity: "80%",
                 }}
               >
                 18.6001232...
-              </h2>
+              </motion.h2>
             </motion.div>
             <motion.div
               variants={itemMainInfo}
@@ -282,8 +394,7 @@ function App() {
                 alignItems: "center",
                 display: "flex",
                 textAlign: "left",
-                marginLeft: "5rem",
-                width: "66rem",
+                width: "60vw",
                 justifyContent: "flex-start",
               }}
             >
@@ -317,9 +428,11 @@ function App() {
                     <Typist.Backspace count={20} delay={1000} />
                     <span>learning</span>
                     <Typist.Backspace count={20} delay={1000} />
-                    <span>perfecting</span>
+                    <span>improving</span>
                     <Typist.Backspace count={20} delay={1000} />
                     <span>problemsolving</span>
+                    <Typist.Backspace count={20} delay={1000} />
+                    <span>perfecting</span>
                     <Typist.Backspace count={20} delay={1000} />{" "}
                     <span>teamwork</span>
                     <Typist.Backspace count={20} delay={1000} />
@@ -344,7 +457,7 @@ function App() {
               <motion.p className="html-blue">&lt;/p&gt;</motion.p>
             </motion.div>
           </motion.div>
-        </section>
+        </motion.section>
 
         <motion.div className="tools-container">
           <motion.div
@@ -531,7 +644,7 @@ function App() {
             style={{
               display: "flex",
               justifyContent: "space-evenly",
-              width: "30vw",
+              width: "20em",
               margin: "auto",
             }}
           >

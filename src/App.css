@@ -16,6 +16,40 @@
   --typewriterCharacters: 13;
 }
 
+.App-header {
+  background-color: #020202;
+  /* background-color: #020202;*/
+  font-family: "Fira Code", monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #084038;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--cyan);
+  border-radius: 0rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a4f7ed;
+}
+
 .html-blue {
   font-size: 0.5em;
   color: var(--blue);
@@ -60,13 +94,13 @@
   color: white;
 }
 .p-cyan {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 100;
   color: white;
   margin-right: 1rem;
 }
 .p-typical {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: var(--cyan);
 }
 .inquery {
@@ -308,7 +342,6 @@ h1::after {
 }
 .main-info {
   display: flex;
-  margin-left: -10rem;
   justify-content: space-evenly;
   z-index: 1000;
 }
@@ -318,16 +351,4 @@ h1::after {
   margin: 0;
   height: 3rem;
   align-items: center;
-}
-
-.App-header {
-  background-color: #020202;
-  font-family: "Fira Code", monospace;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
