@@ -18,6 +18,15 @@ function App() {
       setHeaderIsFinished(true);
     }, 5300);
   });
+
+  // 1049882400000
+  let ageEl = document.getElementById("age");
+
+  setInterval(() => {
+    let time =
+      (new Date() - new Date(1049882400000)) / (1000 * 60 * 60 * 24 * 365.25); // milliseconds per year
+    ageEl.innerText = time.toString().substring(0, 12);
+  }, 50);
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -265,14 +274,13 @@ function App() {
               }}
             >
               <h2
+                id="age"
                 style={{
                   fontWeight: "100",
                   fontSize: "2.8rem",
                   opacity: "80%",
                 }}
-              >
-                18.6001232...
-              </h2>
+              ></h2>
             </motion.div>
             <motion.div
               variants={itemMainInfo}
@@ -531,19 +539,21 @@ function App() {
             style={{
               display: "flex",
               justifyContent: "space-evenly",
-              width: "30vw",
+              width: "50vw",
               margin: "auto",
             }}
           >
             <p className="inquery-gray">// Business inquery?</p>
-            <p
+            <a
+              href="mailto:isak.anderson9@gmail.com"
               style={{
+                color: "white",
                 textDecoration: "underline",
                 textUnderlineOffset: "5px",
               }}
             >
               Contact me!
-            </p>
+            </a>
           </div>
         </motion.section>
         <section className="view-prj">
