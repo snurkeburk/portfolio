@@ -9,10 +9,15 @@ import { Button } from "@mui/material";
 import Typical from "react-typical";
 import { m, motion } from "framer-motion";
 import Typist from "react-typist";
+import { Collapse } from "react-collapse";
 
 function App() {
   const [allShown, setAllShown] = useState("hidden");
   const [headerIsFinished, setHeaderIsFinished] = useState(false);
+  const [collapseTop, setCollapseTop] = useState(true);
+  const [collapseMid, setCollapseMid] = useState(true);
+  const [collapseBot, setCollapseBot] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       setHeaderIsFinished(true);
@@ -20,13 +25,15 @@ function App() {
   });
 
   // 1049882400000
-  let ageEl = document.getElementById("age");
+  useEffect(() => {
+    let ageEl = document.getElementById("age");
 
-  setInterval(() => {
-    let time =
-      (new Date() - new Date(1049882400000)) / (1000 * 60 * 60 * 24 * 365.25); // milliseconds per year
-    ageEl.innerText = time.toString().substring(0, 12);
-  }, 50);
+    setInterval(() => {
+      let time =
+        (new Date() - new Date(1049882400000)) / (1000 * 60 * 60 * 24 * 365.25); // milliseconds per year
+      ageEl.innerText = time.toString().substring(0, 12);
+    }, 50);
+  });
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -43,7 +50,7 @@ function App() {
       transition: {
         delayChildren: 8,
       },
-      opacity: 1,
+      opacity: 0,
     },
   };
   const containerTop = {
@@ -104,6 +111,19 @@ function App() {
   useEffect(() => {
     setCount(1);
   }, [count]);
+
+  function viewProj() {
+    if (collapseTop) {
+      setCollapseTop(false);
+      setCollapseMid(false);
+      setCollapseBot(false);
+    } else {
+      setCollapseTop(true);
+      setCollapseMid(true);
+      setCollapseBot(true);
+    }
+  }
+
   return (
     <div className="App">
       <link
@@ -353,6 +373,11 @@ function App() {
             initial={{ y: 200 }}
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 5 }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <motion.div
               style={{
@@ -361,7 +386,6 @@ function App() {
                 alignItems: "center",
                 display: "flex",
                 justifyContent: "flex-start",
-                marginLeft: "10rem",
               }}
             >
               <Typical
@@ -383,6 +407,7 @@ function App() {
               }}
             >
               <motion.h2
+                id="age"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1 }}
@@ -391,9 +416,7 @@ function App() {
                   fontSize: "2.4rem",
                   opacity: "80%",
                 }}
-              >
-                18.6001232...
-              </motion.h2>
+              ></motion.h2>
             </motion.div>
             <motion.div
               variants={itemMainInfo}
@@ -402,9 +425,10 @@ function App() {
                 margin: "0",
                 alignItems: "center",
                 display: "flex",
-                textAlign: "left",
+                textAlign: "center",
                 width: "60vw",
                 justifyContent: "flex-start",
+                paddingLeft: "20rem",
               }}
             >
               <div className="p-cyan">
@@ -427,7 +451,6 @@ function App() {
                   ""
                 )}
               </div>
-
               <div className="p-typical">
                 {count && headerIsFinished ? (
                   <Typist avgTypingDelay={50} onTypingDone={() => setCount(0)}>
@@ -467,7 +490,6 @@ function App() {
             </motion.div>
           </motion.div>
         </motion.section>
-
         <motion.div className="tools-container">
           <motion.div
             className="tool-top"
@@ -655,6 +677,7 @@ function App() {
               justifyContent: "space-evenly",
               width: "20em",
               margin: "auto",
+              alignItems: "center",
             }}
           >
             <p className="inquery-gray">// Business inquery?</p>
@@ -670,6 +693,7 @@ function App() {
             </a>
           </div>
         </motion.section>
+
         <section className="view-prj">
           <div
             className="htmlbod-proj-container"
@@ -702,6 +726,7 @@ function App() {
                 color: "#53f4e1",
               },
             }}
+            onClick={() => viewProj()}
           >
             + See my projects
           </Button>

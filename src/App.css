@@ -94,13 +94,13 @@
   color: white;
 }
 .p-cyan {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 100;
   color: white;
   margin-right: 1rem;
 }
 .p-typical {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: var(--cyan);
 }
 .inquery {
