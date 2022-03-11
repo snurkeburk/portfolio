@@ -132,6 +132,14 @@ function App() {
       />
 
       <header className="App-header">
+        <section
+          style={{
+            backgroundColor: "red",
+            width: "100%",
+          }}
+        >
+          <h1></h1>Heavily work in progress!
+        </section>
         {/*    <svg
           style={{
             position: "absolute",
@@ -451,6 +459,7 @@ function App() {
                   ""
                 )}
               </div>
+
               <div className="p-typical">
                 {count && headerIsFinished ? (
                   <Typist avgTypingDelay={50} onTypingDone={() => setCount(0)}>
